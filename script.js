@@ -24,30 +24,29 @@ var generatePassword = function(){
     var numbers =  confirm("Would you like numbers in your password?");
     var upper =  confirm("Would you like uppercase letters in your password?");
     var lower = confirm("Would you like lowercase letters in your password?");
+    var specialChar = confirm("Would you like special characters in your password?");
 
     var password1 = ""
 
     
     for(var i=0; i < passLen; i++){
         if(numbers){
-            var numbersYes = Math.floor(Math.random() * 10);
-        } else{
-            numbersYes = null;
-        }
+            password1 += Math.floor(Math.random() * 10);
+        } 
 
         if(upper){
-            var upperYes = upperAlph[Math.floor(Math.random() * upperAlph.length)];
-        } else{
-            upperYes = null;
-        }
+            password1 += upperAlph[Math.floor(Math.random() * upperAlph.length)];
+        } 
 
         if(lower){
-            var lowerYes = lowerAlph[Math.floor(Math.random() * lowerAlph.length)];
-        } else {
-            lowerYes = null;
+            password1 += lowerAlph[Math.floor(Math.random() * lowerAlph.length)];
+        } 
+
+        if(specialChar){
+            password1 += char[Math.floor(Math.random() * char.length)];
         }
 
-        password1 += (numbersYes+upperYes+lowerYes)
+        console.log(password1)
     }
 
     password2 = ""
