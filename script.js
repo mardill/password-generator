@@ -14,48 +14,68 @@ function writePassword() {
 
 var lowerAlph = "abcdefghijklmnopqrstuvwxyz"
 var upperAlph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var char = "!@#$%^&*()"
+var char = "!#$%&'()*+,-./:;<=>?@[^_`{|}~"
 
 generateBtn.addEventListener("click", writePassword);
 
+// create the generatePassword function that will create a random set of characters
+// based on what the user determines they want to use from prompts & confirms
 var generatePassword = function(){
 
+
+// creates first prompt for user to enter the length of the password. If answer is outside
+// params, asks them to enter again & closes if outside again.
+// stores answer in a variable called passLen
+
     var passLen = prompt("How many characters would you like your password to have? (Must be between 8 & 128 characters.");
+        if(passLen < 8 || passLen > 128){
+            passLen = prompt("Must be between 8 & 128. How many characters would you like in your password?")
+        }
+        if(passLen < 8 || passLen > 128){
+            return;
+        }
+
+// stores true or false for each confirm choice
     var numbers =  confirm("Would you like numbers in your password?");
     var upper =  confirm("Would you like uppercase letters in your password?");
     var lower = confirm("Would you like lowercase letters in your password?");
     var specialChar = confirm("Would you like special characters in your password?");
 
+// stops function from running if non variables are selected so program
+// does not freeze
+    if(!numbers && !upper && !lower && !!specialChar){
+        return;
+    }
+
+// sets a password1 value equal to an empty string
     var password1 = ""
 
-    
-    for(var i=0; i < passLen; i++){
-        if(numbers){
+// creates loop to go through only one conditional per loop until it runs the
+// amount of times the length of the password reaches the user length
+
+    for(var i=0; password1.length < passLen; i++){
+        if(numbers && i%4==0){
             password1 += Math.floor(Math.random() * 10);
         } 
 
-        if(upper){
+        if(upper && i%4==1){
             password1 += upperAlph[Math.floor(Math.random() * upperAlph.length)];
         } 
 
-        if(lower){
+        if(lower && i%4==2){
             password1 += lowerAlph[Math.floor(Math.random() * lowerAlph.length)];
         } 
 
-        if(specialChar){
+        if(specialChar && i%4==3){
             password1 += char[Math.floor(Math.random() * char.length)];
         }
 
         console.log(password1)
+        console.log(i)
     }
 
-    password2 = ""
-
-    for(var i=0; i < passLen; i++){
-        password2 += password1[Math.floor(Math.random() * password1.length)];
-    }
-
-    return password2
+// creates the generated password
+    return password1
 
 }
 
@@ -64,39 +84,8 @@ var generatePassword = function(){
     
 
 
-// return password1
 
-
-// for(var i=0; i < passLen; i++){
-
-
-
-            // if (numbers === true){
-            // return Math.floor(Math.random() * 10) 
-            // }
-
-                        // if (upper === true){
-            // return upperAlph[Math.floor(Math.random() * upperAlph.length)];
-            // }
-
-                //         if (lower === true){
-    //         return lowerAlph[Math.floor(Math.random() * lowerAlph.length)];
-    // }
-
-// var generatePassword = function(){
-
-  
-//     confirm("Would you like numbers in your password?");
-//           if (numbers === true){
-//             return Math.floor(Math.random() * 10) 
-//           }
-  
-
-// var passLen = prompt("How many characters would you like your password to have? (Must be between 8 & 128 characters.")
-//     if(passLen < 8 || passLen > 128){
-//         var passLen = prompt("Must be between 8 & 128. How many characters would you like in your password?")
-//     }
-
+// pseudo code for password generator code struction
 
 // structure
 // ask how many characters - store this number as length
