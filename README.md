@@ -22,14 +22,10 @@ Once the chosen amount is entered, the user will decide if they want numbers, lo
 
 This will then generate their password with the exact criteria they selected.
 
-![alt text](assets/images/pwgenerator1.png)
+![alt text](assets/images/password-generator.gif)
 
-![alt text](assets/images/pwgenerator2.png)
-
-![alt text](assets/images/pwgenerator3.png)
 
 ## License
-
 
 
 MIT License
